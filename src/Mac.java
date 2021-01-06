@@ -1,23 +1,28 @@
-public class Mac extends Robot {
+public class Mac extends Robot{
+    private final int maxBattery;
+    private final int maxCapacity;
 
-    private final Integer maxBattery;
-    private final Integer maxCapacity;
-
-    public Mac(String name, Integer actualBattery) {
+    public Mac(String name, int actualBattery) {
         super(name, actualBattery);
         this.maxBattery = 10;
         this.maxCapacity = 10;
     }
 
     @Override
-    public void oneDayOfRobot(Integer maxProducts, Integer charge) {
-        setLoad(0);
-        setActualBattery(getActualBattery() + charge);
-        if (getActualBattery() > this.maxBattery) setActualBattery(this.maxBattery);
+    public void oneDay(int maxProducts, int charge) {
+        this.load = 0;
+        this.actualBattery += charge;
+        if (this.actualBattery > this.maxBattery) this.actualBattery = this.maxBattery;
 
-        setLoad(getActualBattery());
-        if (getLoad() > this.maxCapacity) setLoad(this.maxCapacity);
-        if (getLoad() > maxProducts) setLoad((maxProducts));
-        setLoad(getActualBattery() - getLoad());
+        this.load = this.actualBattery;
+        if (this.load > this.maxCapacity) this.load = this.maxCapacity;
+        if (this.load > maxProducts) this.load = maxProducts;
+
+        this.actualBattery -= this.load;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

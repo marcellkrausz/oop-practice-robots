@@ -1,40 +1,21 @@
 public abstract class Robot {
-
     private final String name;
-    private Integer actualBattery;
-    private Integer load;
-    private Integer maxBattery;
-    private Integer maxCapacity;
+    protected int actualBattery;
+    protected int load;
 
-    public Robot (String name, Integer actualBattery) {
+    public Robot(String name, int actualBattery) {
         this.name = name;
         this.actualBattery = actualBattery;
     }
 
-    public abstract void oneDayOfRobot(Integer maxProducts, Integer charge);
+    public abstract void oneDay(int maxProducts, int charge);
 
     public String getName() {
         return name;
     }
 
-    public Integer getActualBattery() {
-        return actualBattery;
-    }
-
-    public void setActualBattery(Integer actualBattery) {
-        this.actualBattery = actualBattery;
-    }
-
-    public Integer getLoad() {
-        return load;
-    }
-
-    public void setLoad(Integer load) {
-        this.load = load;
-    }
-
     @Override
     public String toString() {
-        return getName() + " taken " + getLoad() + " products and has " + getActualBattery() + " charge.";
+        return getName() + " has taken " + this.load + " products and has " + this.actualBattery + " charge.";
     }
 }

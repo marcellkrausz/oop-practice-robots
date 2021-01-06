@@ -1,9 +1,8 @@
 public class Day {
+    protected final int charge;
+    protected final int products;
 
-    Integer charge;
-    Integer products;
-
-    public Day (Integer charge, Integer products) {
+    public Day(int charge, int products) {
         this.charge = charge;
         this.products = products;
     }

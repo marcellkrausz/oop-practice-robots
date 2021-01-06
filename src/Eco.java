@@ -1,28 +1,32 @@
 public class Eco extends Robot{
-    private final Integer maxBattery;
-    private final Integer maxCapacity;
+    private final int maxBattery;
+    private final int maxCapacity;
 
-    public Eco(String name, Integer actualBattery) {
+    public Eco(String name, int actualBattery) {
         super(name, actualBattery);
         this.maxBattery = 4;
-        this.maxCapacity = 8;
+        this.maxCapacity = 6;
     }
 
     @Override
-    public void oneDayOfRobot(Integer maxProducts, Integer charge) {
-        setLoad(0);
-        setActualBattery(getActualBattery() + charge);
-        if (getActualBattery() > this.maxBattery) setActualBattery(this.maxBattery);
+    public void oneDay(int maxProducts, int charge) {
+        this.load = 0;
+        this.actualBattery += charge;
+        if (this.actualBattery > this.maxBattery) this.actualBattery = this.maxBattery;
 
-        if (getActualBattery() <= 5) {
+        this.load = this.actualBattery * 2;
+        if (this.load > this.maxCapacity) this.load = this.maxCapacity;
+        if (this.load > maxProducts) this.load = maxProducts;
 
+        if (this.load % 2 == 1) {
+            this.actualBattery -= ((this.load + 1) / 2);
+        } else {
+            this.actualBattery -= (this.load / 2);
         }
-        if (getLoad() > this.maxCapacity) setLoad(this.maxCapacity);
-        if (getLoad() > maxProducts) setLoad((maxProducts));
-        if (getLoad() % 2 == 1) {
-            setActualBattery(getActualBattery() - ((getLoad() + 1) / 2));
-        }else {
-            setActualBattery(getActualBattery() - getLoad() / 2);
-        }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }
